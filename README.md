@@ -1,5 +1,5 @@
 # SibDev test task
-#Global dependencies
+# Global dependencies
 * Docker
     * Ubuntu/Debian: sudo apt install docker
 * Docker-compose

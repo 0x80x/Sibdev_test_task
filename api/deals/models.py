@@ -12,6 +12,7 @@ class Deals(models.Model):
     date = models.DateTimeField(default=now)
 
     class Meta:
+        ordering = ['total']
         verbose_name = 'Сделку'
         verbose_name_plural = 'Сделок'
 

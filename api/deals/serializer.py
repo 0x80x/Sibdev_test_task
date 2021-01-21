@@ -8,9 +8,6 @@ class DealsSerializer(serializers.ModelSerializer):
     def create(self, data):
         Deals.objects.create(**data)
 
-
     class Meta:
         model = Deals
         fields = '__all__'
-
-

@@ -23,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'b5-0@z&_6cmdwbnuofh6_xq0i+(d5h66z!k6-$5djh)c=gn4i^'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -124,3 +124,10 @@ STATIC_URL = '/static/'
 
 DATA_UPLOAD_MAX_NUMBER_FIELDS = 1000000
 USE_TZ = False
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+        'LOCATION': 'unique-snowflake',
+    }
+}

@@ -2,6 +2,7 @@ import csv
 from collections import Counter
 
 from rest_framework import generics
+from rest_framework import status
 from rest_framework.response import Response
 
 from .serializer import *
@@ -18,10 +19,10 @@ class DealsListView(generics.ListCreateAPIView):
         try:
             for obj in data:
                 mod.create(data=obj)
-            response = {'Status': 'OK'}
+            return Response({'Status': 'OK'}, status=status.HTTP_200_OK)
         except Exception as e:
             response = {'Status': 'Error', 'Desc': f'{e} - в процессе обработки файла произошла ошибка'}
-        return Response(response)
+            return Response(response, status=status.HTTP_400_BAD_REQUEST)
 
     def get(self, request, *args, **kwargs):
         data = {}
@@ -52,4 +53,4 @@ class DealsListView(generics.ListCreateAPIView):
                     data[obj]['gems'].append(gem)
 
         response = {'response': data}
-        return Response(response)
+        return Response(response, status=status.HTTP_200_OK)
